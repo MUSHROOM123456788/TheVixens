@@ -1,50 +1,95 @@
+/* ===================== base ===================== */
+:root{
+  --fox-size: 64px;
+  --title-size: 72px;
+}
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; padding:0; font-family: "Courier New", monospace; }
+
+/* background + title */
 body {
-  margin: 0;
-  padding: 0;
+  background: #ff0000;
   overflow: hidden;
-  background-color: #ff0000;
-  box-shadow: inset 0 0 100px #ff0066;
-  font-family: "Courier New", monospace;
 }
-
 .title {
-  font-size: 6rem;
-  font-weight: 900;
-  text-align: center;
-  color: black;
-  text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff33cc, 0 0 40px #ff99ff;
-  margin-top: 40px;
+  display:inline-block;
+  margin: 24px auto 12px;
+  padding: 18px 28px;
+  border: 6px solid #ff69b4;
+  color: #000;
+  font-weight:900;
+  font-size: var(--title-size);
+  text-shadow: 0 0 10px #ff9fcf, 0 0 20px #ff6fae, 0 0 30px #ff69b4;
+  position: relative;
+  z-index: 10002; /* above emojis but below fox */
+  text-align:center;
+  left:0; right:0;
 }
 
-/* 🦊 Fox Button */
+/* ===================== fox button ===================== */
 #fox-btn {
-  font-size: 60px;
   position: absolute;
-  cursor: pointer;
-  background: none;
+  width: var(--fox-size);
+  height: var(--fox-size);
+  line-height: var(--fox-size);
+  font-size: 36px;
+  background: transparent;
   border: none;
-  z-index: 10000;
-  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
-  transition: transform 0.2s ease;
+  cursor: pointer;
+  z-index: 10010; /* highest - above emojis and title */
   pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  text-shadow: 0 0 8px #ff8fcf, 0 0 16px #ff4f9f;
+  transition: transform .12s ease;
+  user-select: none;
+}
+#fox-btn:hover { transform: scale(1.12); }
+#fox-btn:active { transform: scale(1.08); }
+
+/* ===================== emojis ===================== */
+#emoji-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* important: emojis do NOT capture clicks */
+  z-index: 10000; /* just below fox */
 }
 
-#fox-btn:hover {
-  transform: scale(1.2);
-}
-
-/* Dancing Emojis */
 .emoji {
   position: absolute;
-  font-size: 40px;
-  animation: floatAround 10s infinite linear;
-  text-shadow: 0 0 10px #ff99ff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  text-shadow: 0 0 6px rgba(255,160,220,.85);
 }
 
-@keyframes floatAround {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(100px, -50px) rotate(90deg); }
-  50% { transform: translate(-100px, 100px) rotate(180deg); }
-  75% { transform: translate(50px, -100px) rotate(270deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
+/* spiral keyframe: rotate around center by --radius */
+@keyframes spiral {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg);
+    opacity: 1;
+  }
+}
+
+/* small pulse applied in addition to spiral for life */
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* responsive adjustments */
+@media (max-width:480px){
+  :root{ --fox-size:56px; --title-size:40px; }
+  .emoji { font-size:28px; }
+  .title { padding:12px 16px; border-width:4px; }
 }
