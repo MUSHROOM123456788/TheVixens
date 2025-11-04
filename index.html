@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>THE VIXENS</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>THE VIXENS</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #ff0000;
+    box-shadow: inset 0 0 100px #ff0066;
+    font-family: "Courier New", monospace;
+  }
+  .title {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 900;
+    color: black;
+    margin: 20px 0;
+    text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff33cc, 0 0 40px #ff99ff;
+  }
+  #emoji-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .emoji {
+    position: absolute;
+    font-size: 40px;
+    will-change: transform;
+    text-shadow: 0 0 6px rgba(255,160,220,.85);
+  }
+  #fox-btn {
+    font-size: 60px;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 9999;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+    transition: transform 0.2s ease;
+  }
+  #fox-btn:hover { transform: scale(1.2); }
+
+  @keyframes spin {
+    from { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+  }
+</style>
 </head>
+
 <body>
   <h1 class="title">THE VIXENS</h1>
+  <div id="emoji-container"></div>
+  <button id="fox-btn">🦊</button>
 
-  <!-- emoji container (script will populate) -->
-  <div id="emoji-container" aria-hidden="true"></div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const emojis = ["💋","💄","😻","😹","😽","🧜‍♀️","🧚","👠","👑","🐥","🪼","🐈","🐫","🦃","🦦","🍄","🐚","🥀","🪸","🪷","🌕","🌖","🌗","🌘","🌑","🌒","🌔","🌓","🌙","⭐️","💫","🥂","🍹","🍻"];
+  const container = document.getElementById("emoji-container");
 
-  <!-- jumping fox button -->
-  <button id="fox-btn" aria-label="Go to hearts page">🦊</button>
+  // Create 40 dancing emojis
+  for (let i = 0; i < 40; i++) {
+    const e = document.createElement("div");
+    e.classList.add("emoji");
+    e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const radius = 40 + Math.random() * (Math.min(window.innerWidth, window.innerHeight) / 2 - 40);
+    const dur = 6 + Math.random() * 8;
+    e.style.setProperty("--radius", radius + "px");
+    e.style.left = window.innerWidth / 2 + "px";
+    e.style.top = window.innerHeight / 2 + "px";
+    e.style.animation = `spin ${dur}s linear infinite`;
+    e.style.animationDelay = Math.random() * 6 + "s";
+    container.appendChild(e);
+  }
 
-  <script src="script.js"></script>
+  const fox = document.getElementById("fox-btn");
+  function moveFox() {
+    const maxX = window.innerWidth - 80;
+    const maxY = window.innerHeight - 80;
+    fox.style.left = Math.random() * maxX + "px";
+    fox.style.top = Math.random() * maxY + "px";
+  }
+  moveFox();
+  setInterval(moveFox, 3000);
+
+  fox.addEventListener("click", () => window.location.href = "second.html");
+  fox.addEventListener("touchend", () => window.location.href = "second.html");
+});
+</script>
 </body>
 </html>
