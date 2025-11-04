@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HEARTS PAGE</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vixens Hearts</title>
+  <style>
+    body {
+      background-color: black;
+      overflow: hidden;
+      margin: 0;
+    }
+    .heart {
+      position: absolute;
+      font-size: 60px;
+      animation: spin 6s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-<div class="hearts-page">
-    <div class="heart-container">
-        <span class="heart pink">💖</span>
-        <span class="heart green">💚</span>
-        <span class="heart blue">💙</span>
-        <span class="heart yellow">💛</span>
-        <span class="heart orange">🧡</span>
-        <span class="heart white">🤍</span>
-        <span class="heart black">🖤</span>
-        <span class="heart purple">💜</span>
-    </div>
-</div>
+  <script>
+    const hearts = ['💗','💚','💙','💛','🧡','🤍','🖤','💜'];
+    hearts.forEach((h, i) => {
+      const el = document.createElement('div');
+      el.classList.add('heart');
+      el.innerText = h;
+      el.style.left = (i * 12) + '%';
+      el.style.top = (Math.sin(i) * 100 + 200) + 'px';
+      el.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(el);
+    });
+  </script>
 </body>
 </html>
