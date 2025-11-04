@@ -4,6 +4,15 @@
     cursor: pointer;
     background: none;
     border: none;
+    z-index: 10000; /* above everything */
+    touch-action: manipulation; /* allows mobile taps */
+}
+#fox-btn {
+    font-size: 60px;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
     z-index: 999; /* ensures it's above emojis */
     touch-action: manipulation; /* improves mobile click/tap responsiveness */
 }
