@@ -1,3 +1,23 @@
+const fox = document.getElementById('fox-btn');
+
+// Slow down fox movement: move every 1.5 seconds instead of 1s
+function moveFoxRandomly() {
+    const maxX = window.innerWidth - 60;
+    const maxY = window.innerHeight - 60;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    fox.style.left = x + 'px';
+    fox.style.top = y + 'px';
+}
+setInterval(moveFoxRandomly, 1500); // slower movement
+
+// Make fox clickable on both desktop and mobile
+fox.addEventListener('click', () => {
+    window.location.href = 'second.html';
+});
+fox.addEventListener('touchstart', () => {
+    window.location.href = 'second.html';
+});
 // Fox button random movement
 const fox = document.getElementById('fox-btn');
 
