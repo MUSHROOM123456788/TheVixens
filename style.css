@@ -1,3 +1,12 @@
+#fox-btn {
+    font-size: 60px;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 999; /* make sure it’s above emojis */
+    touch-action: manipulation; /* improves mobile click responsiveness */
+}
 .hearts-page {
     background-color: black;
     width: 100%;
