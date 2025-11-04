@@ -1,3 +1,18 @@
+/* Dancing animation (scale + slight vertical movement + rotate around center) */
+.emoji-orbit span {
+    position: absolute;
+    font-size: 24px;
+    transform-origin: 75px;
+    animation: spinAndDance 10s linear infinite;
+}
+
+@keyframes spinAndDance {
+    0% { transform: rotate(var(--angle)) translateX(75px) rotate(0deg) scale(1);}
+    25% { transform: rotate(calc(var(--angle) + 90deg)) translateX(75px) rotate(-90deg) scale(1.2) translateY(-5px);}
+    50% { transform: rotate(calc(var(--angle) + 180deg)) translateX(75px) rotate(-180deg) scale(1);}
+    75% { transform: rotate(calc(var(--angle) + 270deg)) translateX(75px) rotate(-270deg) scale(1.2) translateY(5px);}
+    100% { transform: rotate(calc(var(--angle) + 360deg)) translateX(75px) rotate(-360deg) scale(1);}
+}
 /* General */
 body {
     margin: 0;
