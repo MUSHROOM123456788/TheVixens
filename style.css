@@ -1,25 +1,33 @@
-.emoji-orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+/* General page setup */
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #ff0000;
+    overflow: hidden;
 }
 
-.emoji-orbit span {
-    position: absolute;
-    font-size: 24px;
-    transform-origin: 75px;
-    animation: spinAndDance 10s linear infinite;
+/* Page title */
+.title {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 900;
+    color: black;
+    text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
+    border: 5px solid #ff69b4;
+    display: inline-block;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-@keyframes spinAndDance {
-    0% { transform: rotate(var(--angle)) translateX(75px) rotate(0deg) scale(1);}
-    25% { transform: rotate(calc(var(--angle) + 90deg)) translateX(75px) rotate(-90deg) scale(1.2) translateY(-5px);}
-    50% { transform: rotate(calc(var(--angle) + 180deg)) translateX(75px) rotate(-180deg) scale(1);}
-    75% { transform: rotate(calc(var(--angle) + 270deg)) translateX(75px) rotate(-270deg) scale(1.2) translateY(5px);}
-    100% { transform: rotate(calc(var(--angle) + 360deg)) translateX(75px) rotate(-360deg) scale(1);}
+/* Fox button */
+#fox-btn {
+    font-size: 60px;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
+
 /* Emoji container */
 .emoji-container {
     position: absolute;
@@ -30,14 +38,13 @@
     overflow: hidden;
 }
 
-/* Individual emojis */
 .emoji-container span {
     position: absolute;
     font-size: 36px;
     animation: floatDance 6s ease-in-out infinite;
 }
 
-/* Dancing / floating animation */
+/* Floating/dancing emoji animation */
 @keyframes floatDance {
     0% { transform: translateY(0) rotate(0deg) scale(1); }
     25% { transform: translateY(-15px) rotate(15deg) scale(1.2); }
