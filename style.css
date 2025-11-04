@@ -1,30 +1,71 @@
+/* ===================== GENERAL PAGE ===================== */
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #ff0000;
+    overflow: hidden;
+}
+
+/* ===================== TITLE ===================== */
+.title {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 900;
+    color: black;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
+    border: 5px solid #ff69b4;
+    display: inline-block;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* ===================== FOX BUTTON ===================== */
 #fox-btn {
     font-size: 60px;
     position: absolute;
     cursor: pointer;
     background: none;
     border: none;
-    z-index: 10000; /* above everything */
-    touch-action: manipulation; /* allows mobile taps */
+    z-index: 10000;       /* Always on top */
+    touch-action: manipulation; /* Mobile taps */
+    pointer-events: auto; /* Ensure clickable */
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4; /* Neon glow */
+    transition: transform 0.2s; /* Hover/tap scale effect */
 }
-#fox-btn {
-    font-size: 60px;
+
+/* Hover (desktop) effect */
+#fox-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Active/tap effect (mobile) */
+#fox-btn:active {
+    transform: scale(1.2);
+}
+
+/* ===================== EMOJI CONTAINER ===================== */
+.emoji-container {
     position: absolute;
-    cursor: pointer;
-    background: none;
-    border: none;
-    z-index: 999; /* ensures it's above emojis */
-    touch-action: manipulation; /* improves mobile click/tap responsiveness */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
-#fox-btn {
-    font-size: 60px;
+
+.emoji-container span {
     position: absolute;
-    cursor: pointer;
-    background: none;
-    border: none;
-    z-index: 999; /* make sure it’s above emojis */
-    touch-action: manipulation; /* improves mobile click responsiveness */
+    font-size: 36px;
 }
+
+/* Spiral animation keyframes for emojis */
+@keyframes spiral {
+    0% { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+}
+
+/* ===================== SECOND PAGE HEARTS ===================== */
 .hearts-page {
     background-color: black;
     width: 100%;
@@ -60,55 +101,4 @@
 @keyframes spinHearts {
     0% { transform: rotate(0deg) translateX(200px) rotate(0deg);}
     100% { transform: rotate(360deg) translateX(200px) rotate(-360deg);}
-}
-/* General page */
-body {
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #ff0000;
-    overflow: hidden;
-}
-
-/* Title */
-.title {
-    text-align: center;
-    font-size: 80px;
-    font-weight: 900;
-    color: black;
-    font-family: 'Courier New', monospace;
-    text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
-    border: 5px solid #ff69b4;
-    display: inline-block;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Fox button */
-#fox-btn {
-    font-size: 60px;
-    position: absolute;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-/* Emoji container */
-.emoji-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-}
-
-.emoji-container span {
-    position: absolute;
-    font-size: 36px;
-}
-
-/* Spiral animation keyframes for emojis */
-@keyframes spiral {
-    0% { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
 }
