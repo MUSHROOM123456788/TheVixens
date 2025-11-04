@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Vixens Hearts</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hearts</title>
   <style>
-    body {
-      background-color: black;
-      overflow: hidden;
-      margin: 0;
-    }
-    .heart {
-      position: absolute;
-      font-size: 60px;
-      animation: spin 6s linear infinite;
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    html,body{height:100%;margin:0;background:#000;color:white;overflow:hidden;}
+    .heart { position:absolute; font-size:80px; left:50%; top:50%; transform-origin:200px; animation:spin 8s linear infinite;}
+    @keyframes spin { from{transform:rotate(0deg) translateX(200px) rotate(0deg);} to{transform:rotate(360deg) translateX(200px) rotate(-360deg);} }
   </style>
 </head>
 <body>
   <script>
-    const hearts = ['💗','💚','💙','💛','🧡','🤍','🖤','💜'];
-    hearts.forEach((h, i) => {
+    const hearts = ['💖','💚','💙','💛','🧡','🤍','🖤','💜'];
+    hearts.forEach((h,i) => {
       const el = document.createElement('div');
-      el.classList.add('heart');
-      el.innerText = h;
-      el.style.left = (i * 12) + '%';
-      el.style.top = (Math.sin(i) * 100 + 200) + 'px';
-      el.style.animationDuration = (4 + Math.random() * 4) + 's';
+      el.className = 'heart';
+      el.textContent = h;
+      el.style.animationDelay = (i * 0.6) + 's';
+      el.style.left = (50 + Math.cos(i) * 30) + '%';
+      el.style.top  = (50 + Math.sin(i) * 25) + '%';
+      el.style.fontSize = (70 + (i*6)) + 'px';
       document.body.appendChild(el);
     });
   </script>
