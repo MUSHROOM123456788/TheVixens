@@ -1,4 +1,4 @@
-/* General page setup */
+/* General page */
 body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
@@ -6,12 +6,13 @@ body {
     overflow: hidden;
 }
 
-/* Page title */
+/* Title */
 .title {
     text-align: center;
     font-size: 80px;
     font-weight: 900;
     color: black;
+    font-family: 'Courier New', monospace;
     text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
     border: 5px solid #ff69b4;
     display: inline-block;
@@ -41,14 +42,10 @@ body {
 .emoji-container span {
     position: absolute;
     font-size: 36px;
-    animation: floatDance 6s ease-in-out infinite;
 }
 
-/* Floating/dancing emoji animation */
-@keyframes floatDance {
-    0% { transform: translateY(0) rotate(0deg) scale(1); }
-    25% { transform: translateY(-15px) rotate(15deg) scale(1.2); }
-    50% { transform: translateY(0) rotate(0deg) scale(1); }
-    75% { transform: translateY(15px) rotate(-15deg) scale(1.2); }
-    100% { transform: translateY(0) rotate(0deg) scale(1); }
+/* Spiral animation keyframes for emojis */
+@keyframes spiral {
+    0% { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
 }
