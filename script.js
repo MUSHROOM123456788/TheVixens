@@ -1,16 +1,22 @@
-// Add emoji spans dynamically to all holders
-const holders = document.querySelectorAll('.emoji-orbit');
-const emojis = ["💋","💄","😻","😹","😽","🧜‍♀️","🧚","👠","👑","🐥","🪼","🐈","🐫","🦃","🦦","🍄","🪸","🪷","🌕","🌖","🌗","🌘","🌑","🌒","🌔","🌓","🌙","⭐️","💫","🥂","🍹","🍻"];
+// Fox button random movement
+const fox = document.getElementById('fox-btn');
+function moveFoxRandomly() {
+    const maxX = window.innerWidth - 60;
+    const maxY = window.innerHeight - 60;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    fox.style.left = x + 'px';
+    fox.style.top = y + 'px';
+}
+// Move fox every 1 second
+setInterval(moveFoxRandomly, 1000);
 
-holders.forEach(holder => {
-    holder.innerHTML = ''; // clear any previous content
-    emojis.forEach((emoji, i) => {
-        const span = document.createElement('span');
-        span.textContent = emoji;
-        span.style.setProperty('--angle', (i * (360 / emojis.length)) + 'deg');
-        holder.appendChild(span);
-    });
+// Fox button click -> go to second page
+fox.addEventListener('click', () => {
+    window.location.href = 'second.html';
 });
+
+// Generate dancing emojis
 const emojiContainer = document.querySelector('.emoji-container');
 const emojis = ["💋","💄","😻","😹","😽","🧜‍♀️","🧚","👠","👑","🐥","🪼","🐈","🐫","🦃","🦦","🍄","🪸","🪷","🌕","🌖","🌗","🌘","🌑","🌒","🌔","🌓","🌙","⭐️","💫","🥂","🍹","🍻"];
 
@@ -23,7 +29,7 @@ for (let i = 0; i < 50; i++) {
     span.style.left = Math.random() * window.innerWidth + "px";
     span.style.top = Math.random() * window.innerHeight + "px";
     
-    // Random animation delay and duration for natural effect
+    // Random animation delay and duration
     span.style.animationDelay = (Math.random() * 5) + "s";
     span.style.animationDuration = (4 + Math.random() * 3) + "s";
     
