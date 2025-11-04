@@ -1,4 +1,11 @@
-/* Dancing animation (scale + slight vertical movement + rotate around center) */
+.emoji-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+}
+
 .emoji-orbit span {
     position: absolute;
     font-size: 24px;
@@ -12,142 +19,4 @@
     50% { transform: rotate(calc(var(--angle) + 180deg)) translateX(75px) rotate(-180deg) scale(1);}
     75% { transform: rotate(calc(var(--angle) + 270deg)) translateX(75px) rotate(-270deg) scale(1.2) translateY(5px);}
     100% { transform: rotate(calc(var(--angle) + 360deg)) translateX(75px) rotate(-360deg) scale(1);}
-}
-/* General */
-body {
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #ff0000;
-    overflow: hidden;
-}
-
-/* Title */
-.title {
-    text-align: center;
-    font-size: 80px;
-    font-weight: 900;
-    color: black;
-    text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
-    border: 5px solid #ff69b4;
-    display: inline-block;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Fox button */
-#fox-btn {
-    font-size: 60px;
-    position: absolute;
-    cursor: pointer;
-    background: none;
-    border: none;
-    animation: moveFox 8s infinite alternate;
-}
-
-@keyframes moveFox {
-    0% {top: 10%; left: 10%;}
-    25% {top: 70%; left: 20%;}
-    50% {top: 20%; left: 80%;}
-    75% {top: 60%; left: 60%;}
-    100% {top: 10%; left: 10%;}
-}
-
-/* Image holders grid */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 150px);
-    grid-gap: 20px;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.image-holder {
-    width: 150px;
-    height: 150px;
-    border: 5px solid black;
-    box-shadow: 0 0 20px pink;
-    position: relative;
-    border-radius: 15px;
-    overflow: visible;
-}
-
-/* Emoji orbit for each holder */
-.image-holder .emoji-orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-}
-
-.image-holder .emoji-orbit span {
-    position: absolute;
-    font-size: 24px;
-    transform-origin: 75px; /* radius of orbit */
-    animation: spinEmoji 10s linear infinite;
-}
-
-.image-holder .emoji-orbit span:nth-child(1) { transform: rotate(0deg) translateX(75px); animation-delay: 0s;}
-.image-holder .emoji-orbit span:nth-child(2) { transform: rotate(15deg) translateX(75px); animation-delay: 0.2s;}
-.image-holder .emoji-orbit span:nth-child(3) { transform: rotate(30deg) translateX(75px); animation-delay: 0.4s;}
-.image-holder .emoji-orbit span:nth-child(4) { transform: rotate(45deg) translateX(75px); animation-delay: 0.6s;}
-.image-holder .emoji-orbit span:nth-child(5) { transform: rotate(60deg) translateX(75px); animation-delay: 0.8s;}
-.image-holder .emoji-orbit span:nth-child(6) { transform: rotate(75deg) translateX(75px); animation-delay: 1s;}
-.image-holder .emoji-orbit span:nth-child(7) { transform: rotate(90deg) translateX(75px); animation-delay: 1.2s;}
-.image-holder .emoji-orbit span:nth-child(8) { transform: rotate(105deg) translateX(75px); animation-delay: 1.4s;}
-.image-holder .emoji-orbit span:nth-child(9) { transform: rotate(120deg) translateX(75px); animation-delay: 1.6s;}
-.image-holder .emoji-orbit span:nth-child(10){ transform: rotate(135deg) translateX(75px); animation-delay: 1.8s;}
-.image-holder .emoji-orbit span:nth-child(11){ transform: rotate(150deg) translateX(75px); animation-delay: 2s;}
-.image-holder .emoji-orbit span:nth-child(12){ transform: rotate(165deg) translateX(75px); animation-delay: 2.2s;}
-.image-holder .emoji-orbit span:nth-child(13){ transform: rotate(180deg) translateX(75px); animation-delay: 2.4s;}
-.image-holder .emoji-orbit span:nth-child(14){ transform: rotate(195deg) translateX(75px); animation-delay: 2.6s;}
-.image-holder .emoji-orbit span:nth-child(15){ transform: rotate(210deg) translateX(75px); animation-delay: 2.8s;}
-.image-holder .emoji-orbit span:nth-child(16){ transform: rotate(225deg) translateX(75px); animation-delay: 3s;}
-.image-holder .emoji-orbit span:nth-child(17){ transform: rotate(240deg) translateX(75px); animation-delay: 3.2s;}
-.image-holder .emoji-orbit span:nth-child(18){ transform: rotate(255deg) translateX(75px); animation-delay: 3.4s;}
-.image-holder .emoji-orbit span:nth-child(19){ transform: rotate(270deg) translateX(75px); animation-delay: 3.6s;}
-.image-holder .emoji-orbit span:nth-child(20){ transform: rotate(285deg) translateX(75px); animation-delay: 3.8s;}
-.image-holder .emoji-orbit span:nth-child(21){ transform: rotate(300deg) translateX(75px); animation-delay: 4s;}
-.image-holder .emoji-orbit span:nth-child(22){ transform: rotate(315deg) translateX(75px); animation-delay: 4.2s;}
-.image-holder .emoji-orbit span:nth-child(23){ transform: rotate(330deg) translateX(75px); animation-delay: 4.4s;}
-.image-holder .emoji-orbit span:nth-child(24){ transform: rotate(345deg) translateX(75px); animation-delay: 4.6s;}
-
-@keyframes spinEmoji {
-    0% { transform: rotate(var(--angle)) translateX(75px) rotate(0deg);}
-    100% { transform: rotate(calc(var(--angle) + 360deg)) translateX(75px) rotate(-360deg);}
-}
-
-/* Hearts page */
-.hearts-page {
-    background-color: black;
-    overflow: hidden;
-}
-
-.heart-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
-
-.heart {
-    position: absolute;
-    font-size: 80px;
-    top: 50%;
-    left: 50%;
-    transform-origin: 150px;
-    animation: spin 5s linear infinite;
-}
-
-.pink { animation-delay: 0s; }
-.green { animation-delay: 0.5s; }
-.blue { animation-delay: 1s; }
-.yellow { animation-delay: 1.5s; }
-.orange { animation-delay: 2s; }
-.white { animation-delay: 2.5s; }
-.black { animation-delay: 3s; }
-.purple { animation-delay: 3.5s; }
-
-@keyframes spin {
-    0% {transform: rotate(0deg) translateX(150px) rotate(0deg);}
-    100% {transform: rotate(360deg) translateX(150px) rotate(-360deg);}
 }
