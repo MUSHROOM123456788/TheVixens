@@ -1,5 +1,29 @@
 const fox = document.getElementById('fox-btn');
 
+// Slow down the jump: every 2 seconds
+function moveFoxRandomly() {
+    const maxX = window.innerWidth - 60;
+    const maxY = window.innerHeight - 60;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    fox.style.left = x + 'px';
+    fox.style.top = y + 'px';
+}
+setInterval(moveFoxRandomly, 2000); // slightly slower jump
+
+// Open second page on click or touch
+function goToSecondPage(event) {
+    event.preventDefault(); // prevents double triggers
+    window.location.href = 'second.html';
+}
+
+// Desktop click
+fox.addEventListener('click', goToSecondPage);
+
+// Mobile touch
+fox.addEventListener('touchstart', goToSecondPage, { passive: false });
+ fox = document.getElementById('fox-btn');
+
 // Slow down fox movement: move every 1.5 seconds instead of 1s
 function moveFoxRandomly() {
     const maxX = window.innerWidth - 60;
