@@ -20,3 +20,28 @@
     75% { transform: rotate(calc(var(--angle) + 270deg)) translateX(75px) rotate(-270deg) scale(1.2) translateY(5px);}
     100% { transform: rotate(calc(var(--angle) + 360deg)) translateX(75px) rotate(-360deg) scale(1);}
 }
+/* Emoji container */
+.emoji-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+/* Individual emojis */
+.emoji-container span {
+    position: absolute;
+    font-size: 36px;
+    animation: floatDance 6s ease-in-out infinite;
+}
+
+/* Dancing / floating animation */
+@keyframes floatDance {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-15px) rotate(15deg) scale(1.2); }
+    50% { transform: translateY(0) rotate(0deg) scale(1); }
+    75% { transform: translateY(15px) rotate(-15deg) scale(1.2); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
